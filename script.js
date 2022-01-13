@@ -39,16 +39,7 @@ btnScrollTo.addEventListener('click', e => {
 });
 
 //
-// Page navigation
 
-// document.querySelectorAll('.nav__link').forEach(link =>
-//   link.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   })
-// );
 // SCROLL
 // event delegation use
 //1. Add event listener to common parent element
@@ -63,72 +54,25 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-// ///////////Selecting elements
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
-// const header = document.querySelector('.header');
-// const allSection = document.querySelectorAll('.section');
-// // console.log(allSection);
-// document.getElementById('section--1');
-// const allButtons = document.getElementsByTagName('button');
-// // console.log(allButtons);
+tabsContainer.addEventListener('click', function (e) {
+  e.preventDefault;
+  const clicked = e.target.closest('.operations__tab');
+  // Guard clause
+  if (!clicked) return;
+  // Active tab
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
 
-// // console.log(document.getElementsByClassName('btn'));
-
-// ///////////creating and inserting elements
-
-// //.insertAdjacentHTML
-
-// const message = document.createElement('div');
-// message.classList.add('cookie-message');
-
-// message.innerHTML = `We use cookies for improved functionality and anatylitcs. <button class="btn btn--close-cookie">Got it! </button>`;
-
-// // header.prepend(message);
-// header.append(message);
-// // header.append(message.cloneNode(true));
-// // header.before(message);
-// // header.after(message);
-
-// // Delete elements
-
-// document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-//   message.remove();
-//   // message.parentElement.removeChild(message);
-// });
-
-// // Styles
-
-// message.style.backgroundColor = '#37384d';
-// message.style.width = '120%';
-// // console.log(getComputedStyle(message).color);
-
-// message.style.height =
-//   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
-
-// // document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// // // Attributes
-// // const logo = document.querySelector('.nav__logo');
-// // console.log(logo.src);
-// // console.log(logo.className);
-// // console.log(logo.getAttribute('designer'));
-// // logo.setAttribute('company', 'Bankist');
-// // logo.alt = 'Beatiful minimalist logo'; //Change the attribute value
-
-// //rgb(255,255,255)
-
-// // const randomInt = (min, max) =>
-// //   Math.floor(Math.random() * (max - min + 1) + min);
-
-// // const randomColor = () =>
-// //   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-
-// // document.querySelector('.nav__link').addEventListener('click', function (e) {
-// //   this.style.backgroundColor = randomColor();
-// // });
-// // document.querySelector('.nav__links').addEventListener('click', function (e) {
-// //   this.style.backgroundColor = randomColor();
-// // });
-// // document.querySelector('.nav').addEventListener('click', function (e) {
-// //   this.style.backgroundColor = randomColor();
-// // });
+  // Activate content area
+  tabsContent.forEach(content =>
+    content.classList.remove('operations__content--active')
+  );
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
