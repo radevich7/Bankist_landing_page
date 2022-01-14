@@ -1,7 +1,6 @@
 'use strict';
 
-///////////////////////////////////////
-
+// Elements
 const nav = document.querySelector('.nav');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -37,18 +36,14 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-//Scrolling
+//Scrolling into viewmfor learn more button
 
 btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-//
+// SCROLL into view based on the nav_links
 
-// SCROLL
-// event delegation use
-//1. Add event listener to common parent element
-//2. Determined what element originated the vent
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   // Mathcing strategy
   e.preventDefault();
@@ -91,12 +86,12 @@ const handleHover = function (e, opacity) {
     logo.style.opacity = this;
   }
 };
-// Passing 'argument' into hanler
+
+// Passing 'argument' into handler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 // STICKY NAVIGATION
-
 const header = document.querySelector('.header');
 
 // calculate nav dynamically
@@ -131,13 +126,11 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSection.forEach(function (section) {
   sectionObserver.observe(section);
-  // section.classList.add('section--hidden');
+  section.classList.add('section--hidden');
 });
 
 //  Lazy loading images
-
 const imgTargets = document.querySelectorAll('img[data-src]');
-
 const loadImg = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
@@ -204,6 +197,7 @@ const slider = function () {
     goToSlide(currentSlide);
     activeteDot(currentSlide);
   };
+
   // Previous slide
   const previousSlide = function () {
     if (currentSlide === 0) {

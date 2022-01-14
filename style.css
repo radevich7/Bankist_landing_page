@@ -98,7 +98,6 @@ p {
   color: #666;
 }
 
-/* This is BAD for accessibility! Don't do in the real world! */
 button:focus {
   outline: none;
 }
@@ -122,7 +121,6 @@ img {
   z-index: 100;
 }
 
-/* nav and stickly class at the same time */
 .nav.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
@@ -315,7 +313,6 @@ h4 {
 .operations__content {
   display: none;
 
-  /* JUST PRESENTATIONAL */
   font-size: 1.7rem;
   padding: 2.5rem 7rem 6.5rem 7rem;
 }
@@ -390,7 +387,6 @@ h4 {
   align-items: center;
   justify-content: center;
 
-  /* THIS creates the animation! */
   transition: transform 1s;
 }
 
@@ -445,9 +441,6 @@ h4 {
   margin-right: 1.75rem;
   cursor: pointer;
   transition: all 0.5s;
-
-  /* Only necessary when overlying images */
-  /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
 }
 
 .dots__dot:last-child {
@@ -455,7 +448,6 @@ h4 {
 }
 
 .dots__dot--active {
-  /* background-color: #fff; */
   background-color: #888;
   opacity: 1;
 }
