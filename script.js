@@ -94,3 +94,23 @@ const handleHover = function (e, opacity) {
 // Passing 'argument' into hanler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+// STICKY NAVIGATION
+
+const header = document.querySelector('.header');
+
+// calculate nav dynamically
+const navHeight = nav.getBoundingClientRect();
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight.height}px`,
+});
+headerObserver.observe(header);
